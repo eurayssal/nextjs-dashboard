@@ -62,6 +62,8 @@ export async function fetchCardData() {
          SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
          FROM invoices`;
 
+    //O Promise.all inicia a execução de várias promessas assíncronas em paralelo
+    //assim as solicitações de banco de dados são feitas ao mesmo tempo e não em cascata
     const data = await Promise.all([
       invoiceCountPromise,
       customerCountPromise,
